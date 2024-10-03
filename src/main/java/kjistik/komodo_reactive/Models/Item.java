@@ -1,5 +1,7 @@
 package kjistik.komodo_reactive.Models;
 
+import java.util.UUID;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -10,9 +12,9 @@ public class Item {
 
     @Id
     @Column("id")
-    Long id;
+    UUID id;
     @Column("unit_id")
-    Long unit_id;
+    UUID unit_id;
     @Column("name")
     String name;
 }

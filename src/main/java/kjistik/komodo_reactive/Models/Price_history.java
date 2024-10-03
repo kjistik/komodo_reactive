@@ -1,5 +1,7 @@
 package kjistik.komodo_reactive.Models;
 
+import java.util.UUID;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -9,7 +11,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Price_history {
     @Id
     @Column("id")
-    Long id;
+    UUID id;
     @Column("item_id")
-    Long item_id;
+    UUID item_id;
 }

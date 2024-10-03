@@ -9,12 +9,12 @@ DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS unit;
 
 CREATE TABLE
-    unit (id BIGINT PRIMARY KEY, name varchar(255) NOT NULL);
+    unit (id UUID PRIMARY KEY, name varchar(255) NOT NULL);
 
 CREATE TABLE
     item (
         id BIGINT PRIMARY KEY,
-        unit_id BIGINT,
+        unit_id UUID,
         name varchar(255) NOT NULL,
         FOREIGN KEY (unit_id) REFERENCES unit (id)
     );
