@@ -8,11 +8,11 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>kjistik</groupId>
+	<groupId>kjisijk</groupId>
 	<artifactId>komodo_reactive</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-DEV</version>
 	<name>komodo_reactive</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Prototipo para aplicación de gestión comercial</description>
 	<url/>
 	<licenses>
 		<license/>
