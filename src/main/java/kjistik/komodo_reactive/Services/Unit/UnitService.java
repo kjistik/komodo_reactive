@@ -8,7 +8,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UnitService {
+
     Flux<Unit> getAll();
+
+    Mono<Unit> getSingleUnit(UUID id);
 
     Mono<Unit> newUnit(Unit newUnit);
 

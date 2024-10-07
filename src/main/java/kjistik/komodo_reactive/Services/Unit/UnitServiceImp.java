@@ -48,4 +48,9 @@ public class UnitServiceImp implements UnitService {
     public void deleteUnit(IdRequest id) {
         repo.deleteById(id.getId());
     }
+
+    @Override
+    public Mono<Unit> getSingleUnit(UUID id) {
+        return repo.findById(id);
+    }
 }
