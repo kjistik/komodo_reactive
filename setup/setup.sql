@@ -13,7 +13,7 @@ CREATE TABLE
 
 CREATE TABLE
     item (
-        id BIGINT PRIMARY KEY,
+        id UUID PRIMARY KEY,
         unit_id UUID,
         name varchar(255) NOT NULL,
         FOREIGN KEY (unit_id) REFERENCES unit (id)
@@ -21,15 +21,15 @@ CREATE TABLE
 
 CREATE TABLE
     price_history (
-        id BIGINT PRIMARY KEY,
-        item_id BIGINT UNIQUE NOT NULL,
+        id UUID PRIMARY KEY,
+        item_id UUID UNIQUE NOT NULL,
         FOREIGN KEY (item_id) REFERENCES item (id)
     );
 
 CREATE TABLE
     variety (
-        id BIGINT PRIMARY KEY,
-        price_history BIGINT,
+        id UUID PRIMARY KEY,
+        price_history UUID,
         active BOOLEAN DEFAULT TRUE,
         amount FLOAT,
         color VARCHAR,
@@ -39,8 +39,8 @@ CREATE TABLE
 
 CREATE TABLE
     price (
-        id BIGINT PRIMARY KEY,
-        variety BIGINT,
+        id UUID PRIMARY KEY,
+        variety UUID,
         value FLOAT,
         since DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (variety) REFERENCES variety (id)
