@@ -45,3 +45,19 @@ CREATE TABLE
         since DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (variety) REFERENCES variety (id)
     );
+CREATE OR REPLACE FUNCTION insert_price_history()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Insert into price_history with the newly inserted item's ID
+    INSERT INTO price_history (id, item_id)
+    VALUES (uuid_generate_v4(), NEW.id);  -- `NEW.id` is the ID of the newly inserted item
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER insert_price_history_trigger
+AFTER INSERT ON item
+FOR EACH ROW
+EXECUTE FUNCTION insert_price_history();
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
