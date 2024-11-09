@@ -40,6 +40,8 @@ public class ItemService implements ItemServiceInt {
         if (unitRepo.checkUnit(item.getUnit_id()) != null) {
             return repo.createItem(item.getId(), item.getUnit_id(), item.getName());
         } else {
+
+            System.out.println("no existe esa unidad, pa");
             return null;
         }
     }
@@ -57,6 +59,6 @@ public class ItemService implements ItemServiceInt {
     public Flux<ItemResponse> getAllItems(int limit, int offset) {
         return repo.getAllItems(limit, offset);
     }
-    
+
 }
 // lo echaron de la vida
