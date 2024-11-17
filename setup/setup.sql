@@ -16,6 +16,7 @@ CREATE TABLE
         id UUID PRIMARY KEY,
         unit_id UUID,
         name varchar(255) NOT NULL,
+        active BOOLEAN,
         FOREIGN KEY (unit_id) REFERENCES unit (id)
     );
 
