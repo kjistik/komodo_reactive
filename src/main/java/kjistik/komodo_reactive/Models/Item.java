@@ -24,4 +24,6 @@ public class Item {
     UUID unit_id;
     @Column("name")
     String name;
+    @Column("active")
+    boolean active;
 }

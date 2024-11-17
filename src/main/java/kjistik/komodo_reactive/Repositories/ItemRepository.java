@@ -15,9 +15,18 @@ public interface ItemRepository extends ReactiveCrudRepository<Item, UUID> {
     @Query("SELECT COUNT(*) FROM item")
     Mono<Integer> getTotalEntries();
 
-    @Query("INSERT INTO item (id, unit_id, name) VALUES (:id, :unit_id, :name)")
-    Mono<Item> createItem(UUID id, UUID unit_id, String name);
+    @Query("SELECT id FROM item WHERE id=:id")
+    Mono<Integer> checkItem(UUID id);
 
-    @Query("SELECT item.id, unit.name AS unit, item.name FROM item INNER JOIN unit ON item.unit_id=unit.id LIMIT :limit OFFSET :offset")
+    @Query("INSERT INTO item (id, unit_id, name, active) VALUES (:id, :unit_id, :name, :active)")
+    Mono<Item> createItem(UUID id, UUID unit_id, String name, boolean active);
+
+    @Query("UPDATE item SET unit_id=:unit_id, name=:name, active = :active where id=:id")
+    Mono<Item> editItem(UUID id, UUID unit_id, String name, boolean active);
+
+    @Query("SELECT item.id, unit.name AS unit, item.name FROM item INNER JOIN unit ON item.unit_id=unit.id WHERE active=true LIMIT :limit OFFSET :offset ")
     Flux<ItemResponse> getAllItems(int limit, int offset);
+
+    @Query("UPDATE item SET active=:active WHERE id=:id")
+    Mono<Integer> deleteItem(UUID id);
 }

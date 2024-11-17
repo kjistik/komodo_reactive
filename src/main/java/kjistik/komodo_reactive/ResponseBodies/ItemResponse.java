@@ -11,4 +11,5 @@ public class ItemResponse {
     UUID id;
     String unit;
     String name;
+    boolean active;
 }

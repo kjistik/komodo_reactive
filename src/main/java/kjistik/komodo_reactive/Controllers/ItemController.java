@@ -3,6 +3,7 @@ package kjistik.komodo_reactive.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,5 +45,15 @@ public class ItemController {
     @GetMapping("/get")
     Flux<ItemResponse> getAllItems(@RequestBody Page page) {
         return service.getAllItems(page.getLenght(), page.getOffset());
+    }
+
+    @PutMapping("/edit")
+    Mono<Item> editItem(@RequestBody Item item) {
+        return service.editItem(item);
+    }
+
+    @PutMapping("/delete")
+    Mono<Integer> deleteItem(@RequestBody IdRequest id) {
+        return service.deleteItem(id);
     }
 }
